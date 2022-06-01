@@ -339,6 +339,7 @@ namespace bx
 			total += (int32_t)strLen(_argv[ii]) + 1;
 		}
 
+        total += 1;
 		char* temp = (char*)alloca(total);
 		int32_t len = 0;
 		for(uint32_t ii = 0; NULL != _argv[ii]; ++ii)
