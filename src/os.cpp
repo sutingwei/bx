@@ -367,6 +367,17 @@ namespace bx
 		}
 
 		return NULL;
+#elif BX_PLATFORM_OSX
+        pid_t pid = fork();
+
+		if (0 == pid)
+		{
+			int result = execvp(_argv[0], const_cast<char *const*>(&_argv[0]) );
+			BX_UNUSED(result);
+			return NULL;
+		}
+
+		return (void*)uintptr_t(pid);
 #else
 		BX_UNUSED(_argv);
 		return NULL;
